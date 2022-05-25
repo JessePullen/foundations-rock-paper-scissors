@@ -11,30 +11,20 @@ function computerPlay() {
     }
 }
 
-const content = document.querySelector('.content');
-const rock = document.querySelector('.rock');
-const paper = document.querySelector('.paper');
-const scissors = document.querySelector('.scissors');
+//Takes player input for their selection and checks that the answer is valid, if not the function is called again to re-prompt the player
+function playerPlay() {
+    let selection = prompt('Please enter: rock, paper or scissors.').toLowerCase();
 
-let playerSelection;
-let rounds = 0;
-
-rock.addEventListener('click', () => {
-    playerSelection = 'rock';
-    playRound(playerSelection)
-});
-paper.addEventListener('click', () => {
-    playerSelection = 'paper';
-    playRound(playerSelection)
-});
-scissors.addEventListener('click', () => {
-    playerSelection = 'scissors';
-    playRound(playerSelection)
-});
-
+    if (selection == 'rock' || selection == 'paper' || selection == 'scissors') {
+        return selection;
+    } else {
+        playerPlay();
+    }
+}
 
 //Takes player and computer selection using previous functions and returns who wins the round based on rules of the game
-function playRound(playerSelection) {
+function playRound() {
+    let playerSelection = playerPlay();
     let computerSelection = computerPlay();
 
     console.log(`You chose: ${playerSelection}, Computer chose: ${computerSelection}`);
@@ -68,40 +58,34 @@ function playRound(playerSelection) {
     }
 }
 
-function roundNumber() {
-    if (roundNumber == 5) {
-        roundNumber =  0;
-        console.log('round reset');
+//Plays 5 rounds and handles scoring
+function playGame() {
+    let rounds = 0;
+    let playerTally = 0;
+    let computerTally = 0;
+    
+    for (let i = 0; i < 5; i++) {
+        let roundResult = playRound();
+        rounds++;
+
+        if (roundResult == 'computerWin') {
+            computerTally++;
+        } else if (roundResult == 'playerWin') {
+            playerTally++;
+        }
+
+        console.log(`Rounds Played: ${rounds}\n` + 
+        `Computer Score: ${computerTally}\n` +
+        `Player Score: ${playerTally}`)
+    }
+
+    if (computerTally > playerTally) {
+        console.log('Computer wins this game');
+    } else if (computerTally < playerTally) {
+        console.log('You win this game');
+    } else {
+        console.log('This game ends in a draw');
     }
 }
-}
 
-// Plays 5 rounds and handles scoring
-// function playGame() {
-//     let rounds = 0;
-//     let playerTally = 0;
-//     let computerTally = 0;
-
-//     for (let i = 0; i < 5; i++) {
-//         let roundResult = playRound();
-//         rounds++;
-
-//         if (roundResult == 'computerWin') {
-//             computerTally++;
-//         } else if (roundResult == 'playerWin') {
-//             playerTally++;
-//         }
-
-//         console.log(`Rounds Played: ${rounds}\n` +
-//             `Computer Score: ${computerTally}\n` +
-//             `Player Score: ${playerTally}`)
-//     }
-
-//     if (computerTally > playerTally) {
-//         console.log('Computer wins this game');
-//     } else if (computerTally < playerTally) {
-//         console.log('You win this game');
-//     } else {
-//         console.log('This game ends in a draw');
-//     }
-// }
+playGame();
