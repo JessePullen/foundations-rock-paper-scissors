@@ -15,6 +15,7 @@ const content = document.querySelector('.content');
 const rock = document.querySelector('.rock');
 const paper = document.querySelector('.paper');
 const scissors = document.querySelector('.scissors');
+const moves = document.querySelector('.moves');
 const results = document.querySelector('.results');
 
 let playerSelection;
@@ -38,7 +39,7 @@ scissors.addEventListener('click', () => {
 function playRound(playerSelection) {
     let computerSelection = computerPlay();
 
-    console.log(`You chose: ${playerSelection}, Computer chose: ${computerSelection}`);
+    moves.textContent = `You chose: ${playerSelection}, Computer chose: ${computerSelection}`;
 
     if (playerSelection == computerSelection) {
         results.textContent = 'Draw';
