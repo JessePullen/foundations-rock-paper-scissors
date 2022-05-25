@@ -62,6 +62,7 @@ function playRound(playerSelection) {
     }
 }
 
+//Displays score, announces winner and resets variables to play another game
 function declareWinner() {
     score.textContent = `Score: Player ${playerTally}, Computer ${computerTally}`;
     if (playerTally == 5) {
@@ -76,11 +77,13 @@ function declareWinner() {
     }
 }
 
+//Displays round number and increments
 function addRounds() {
     round++
     rounds.textContent = `Round: ${round}`;
 }
 
+//Plays a game and updates round and score information
 function playGame() {
     addRounds();
     playRound(playerSelection)
