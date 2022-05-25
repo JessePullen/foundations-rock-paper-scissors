@@ -71,6 +71,7 @@ function declareWinner() {
     if (playerTally == 5 || computerTally == 5) {
         playerTally = 0;
         computerTally = 0;
+        round = 0;
     }
 }
 
