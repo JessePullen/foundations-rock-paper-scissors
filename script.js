@@ -62,20 +62,26 @@ function playRound(playerSelection) {
 }
 
 function declareWinner() {
-    round++
-    console.log(round);
-    rounds.textContent = `Round: ${round}`;
     console.log(`computer: ${computerTally}, player: ${playerTally}`);
     if (playerTally == 5) {
         console.log('player wins');
-        round = 0;
     } else if (computerTally == 5) {
         console.log('computer wins');
-        round = 0;
+    }
+    if (playerTally == 5 || computerTally == 5) {
+        playerTally = 0;
+        computerTally = 0;
     }
 }
 
+function addRounds() {
+    round++
+    console.log(round);
+    rounds.textContent = `Round: ${round}`;
+}
+
 function playGame() {
+    addRounds();
     playRound(playerSelection)
     declareWinner();
 }
