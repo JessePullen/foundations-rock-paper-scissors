@@ -1,3 +1,36 @@
+
+const content = document.querySelector('.content');
+const rock = document.querySelector('.rock');
+const paper = document.querySelector('.paper');
+const scissors = document.querySelector('.scissors');
+const moves = document.querySelector('.moves');
+const results = document.querySelector('.results');
+const rounds = document.querySelector('.rounds');
+
+let playerSelection;
+let round = 0;
+let playerTally = 0;
+let computerTally = 0;
+let winner;
+
+
+
+rock.addEventListener('click', () => {
+    playerSelection = 'rock';
+    playRound(playerSelection);
+    updateRounds()
+});
+paper.addEventListener('click', () => {
+    playerSelection = 'paper';
+    playRound(playerSelection);
+    updateRounds()
+});
+scissors.addEventListener('click', () => {
+    playerSelection = 'scissors';
+    playRound(playerSelection);
+    updateRounds()
+});
+
 //Randomises a choice for the computer opponent and returns the result
 function computerPlay() {
     let selection = Math.floor(Math.random() * 3);
@@ -10,30 +43,6 @@ function computerPlay() {
         return 'scissors';
     }
 }
-
-const content = document.querySelector('.content');
-const rock = document.querySelector('.rock');
-const paper = document.querySelector('.paper');
-const scissors = document.querySelector('.scissors');
-const moves = document.querySelector('.moves');
-const results = document.querySelector('.results');
-
-let playerSelection;
-let rounds = 0;
-
-rock.addEventListener('click', () => {
-    playerSelection = 'rock';
-    playRound(playerSelection)
-});
-paper.addEventListener('click', () => {
-    playerSelection = 'paper';
-    playRound(playerSelection)
-});
-scissors.addEventListener('click', () => {
-    playerSelection = 'scissors';
-    playRound(playerSelection)
-});
-
 
 //Takes player and computer selection using previous functions and returns who wins the round based on rules of the game
 function playRound(playerSelection) {
@@ -70,15 +79,11 @@ function playRound(playerSelection) {
     }
 }
 
-// Plays 5 rounds and handles scoring
+// Plays 5 round and handles scoring
 // function playGame() {
-//     let rounds = 0;
-//     let playerTally = 0;
-//     let computerTally = 0;
-
 //     for (let i = 0; i < 5; i++) {
 //         let roundResult = playRound();
-//         rounds++;
+//         round++;
 
 //         if (roundResult == 'computerWin') {
 //             computerTally++;
@@ -86,7 +91,7 @@ function playRound(playerSelection) {
 //             playerTally++;
 //         }
 
-//         console.log(`Rounds Played: ${rounds}\n` +
+//         console.log(`Rounds Played: ${round}\n` +
 //             `Computer Score: ${computerTally}\n` +
 //             `Player Score: ${playerTally}`)
 //     }
@@ -99,3 +104,18 @@ function playRound(playerSelection) {
 //         console.log('This game ends in a draw');
 //     }
 // }
+
+function updateRounds() {
+    // round++
+    // if (round = 5) {
+    //     round = 0;
+    // }
+    // rounds.textContent = `Rounds: ${round}`;
+    round++
+    console.log(round);
+    rounds.textContent = `Round: ${round}`;
+    if (round == 5) {
+        console.log('end of game');
+        round = 0;
+    }
+}
