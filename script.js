@@ -15,6 +15,7 @@ const content = document.querySelector('.content');
 const rock = document.querySelector('.rock');
 const paper = document.querySelector('.paper');
 const scissors = document.querySelector('.scissors');
+const results = document.querySelector('.results');
 
 let playerSelection;
 let rounds = 0;
@@ -40,29 +41,29 @@ function playRound(playerSelection) {
     console.log(`You chose: ${playerSelection}, Computer chose: ${computerSelection}`);
 
     if (playerSelection == computerSelection) {
-        console.log('Draw');
+        results.textContent = 'Draw';
     } else if (playerSelection == 'rock') {
         if (computerSelection == 'paper') {
-            console.log('Computer wins, paper beats rock.');
+            results.textContent = 'Computer wins, paper beats rock.';
             return 'computerWin';
         } else {
-            console.log('You win, rock beats scissors.');
+            results.textContent = 'You win, rock beats scissors.';
             return 'playerWin';
         }
     } else if (playerSelection == 'paper') {
         if (computerSelection == 'scissors') {
-            console.log('Computer wins, scissors beats paper.');
+            results.textContent = 'Computer wins, scissors beats paper.';
             return 'computerWin';
         } else {
-            console.log('You win, paper beats rock.');
+            results.textContent = 'You win, paper beats rock.';
             return 'playerWin';
         }
     } else if (playerSelection == 'scissors') {
         if (computerSelection == 'rock') {
-            console.log('Computer wins, rock beats scissors.');
+            results.textContent = 'Computer wins, rock beats scissors.';
             return 'computerWin';
         } else {
-            console.log('You win, scissors beats paper.');
+            results.textContent = 'You win, scissors beats paper.';
             return 'playerWin';
         }
     }
